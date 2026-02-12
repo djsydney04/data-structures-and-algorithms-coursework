@@ -1,0 +1,6 @@
+#Compiled files
+*.o
+*.exe
+
+#object files
+*.obj
