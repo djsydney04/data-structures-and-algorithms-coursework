@@ -3,9 +3,6 @@
 
 #include <fstream>
 #include <string>
-#include <sstream>
-#include <stdexcept>
-#include <iostream>
 
 class FileProcessor {
 public:
