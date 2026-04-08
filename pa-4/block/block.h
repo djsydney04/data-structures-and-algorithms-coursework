@@ -3,6 +3,7 @@
 
 #include <string>
 #include <ctime>
+#include <sstream>
 
 class Block {
 private:
@@ -11,6 +12,14 @@ private:
     std::string blockData;
     std::string previousHash;
     std::string currentHash;
+    //timestamp computation
+    std::string calculateTimestamp() const;
+
+    //calculateHash helper functions
+    //calculate the ASCII sum of the combined data
+    int calculateASCIISum(const std::string& dataCombined) const;
+    //convert the ASCII sum to a hexadecimal string
+    std::string convertAsciiToHex(int num) const;
 
 public:
     // constructor
@@ -26,8 +35,6 @@ public:
 
     // hash computation
     std::string calculateHash() const;
-    //timestamp computation
-    std::string calculateTimestamp() const;
-};
 
+};
 #endif
