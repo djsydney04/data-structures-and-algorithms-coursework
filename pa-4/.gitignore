@@ -1,0 +1,4 @@
+# Local build outputs
+/p4.exe
+/tests/block_test
+/tests/blockchain_test
