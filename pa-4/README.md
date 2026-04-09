@@ -6,7 +6,7 @@
 - Student ID: 2441836
 - Chapman Email: mitic@chapman.edu
 - Course Number and Section: CPSC 350-02
-- Assignment Number: pa-4
+- Assignment Number: A4
 
 ## Source Files Submitted
 
