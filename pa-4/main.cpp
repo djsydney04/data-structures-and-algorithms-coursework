@@ -1,6 +1,5 @@
 /*
  * Full Name: Dylan Mitic
- * Student ID: 2441836
  * Chapman Email: mitic@chapman.edu
  * Course Number and Section: CPSC 350-02
  * Assignment Number: pa-4
@@ -84,4 +83,3 @@ int main() {
 
     return 0;
 }
-
