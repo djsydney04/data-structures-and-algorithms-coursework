@@ -1,13 +1,18 @@
-# PA-4 (blockchain / `Block`)
+# PA-4 Blockchain Ledger
 
-- **Implementation:** `block/block.h`, `block/block.cpp`
-- **Tests:** `tests/block_test.cpp`
+- `block/block.h`, `block/block.cpp`: `Block` implementation
+- `blockchain/blockchain.h`, `blockchain/blockchain.cpp`: `Blockchain` implementation
+- `tests/block_test.cpp`: `Block` unit test
+- `tests/blockchain_test.cpp`: `Blockchain` unit test
 
-To compile and run the tests, see **[tests/README.md](tests/README.md)**.
-
-Quick version from the `pa-4` folder:
+Compile and run the tests from the assignment root:
 
 ```bash
-cd tests
-g++ -std=c++17 -Wall -Wextra block_test.cpp ../block/block.cpp -o block_test && ./block_test
+g++ -std=c++17 -Wall -Wextra tests/block_test.cpp block/block.cpp -o block_test
+./block_test
+
+g++ -std=c++17 -Wall -Wextra tests/blockchain_test.cpp block/block.cpp blockchain/blockchain.cpp -o blockchain_test
+./blockchain_test
 ```
+
+See [tests/README.md](tests/README.md) for test coverage details.

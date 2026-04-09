@@ -12,6 +12,7 @@ private:
     std::string blockData;
     std::string previousHash;
     std::string currentHash;
+    Block* next;
     //timestamp computation
     std::string calculateTimestamp() const;
 
@@ -24,6 +25,8 @@ private:
 public:
     // constructor
     Block(int index, const std::string& data, const std::string& prevHash);
+    Block(int index, const std::string& timestamp, const std::string& data,
+          const std::string& prevHash, const std::string& currHash);
     // destructor
     ~Block();
     // getters
@@ -35,6 +38,8 @@ public:
 
     // hash computation
     std::string calculateHash() const;
+    Block* getNext() const;
+    void setNext(Block* nextBlock);
 
 };
 #endif

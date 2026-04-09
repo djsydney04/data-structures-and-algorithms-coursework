@@ -11,6 +11,17 @@ Block::Block(int index, const std::string& data, const std::string& prevHash) {
     previousHash = prevHash;
     timeStamp = calculateTimestamp();
     currentHash = calculateHash();
+    next = nullptr;
+}
+
+Block::Block(int index, const std::string& timestamp, const std::string& data,
+             const std::string& prevHash, const std::string& currHash) {
+    blockIndex = index;
+    timeStamp = timestamp;
+    blockData = data;
+    previousHash = prevHash;
+    currentHash = currHash;
+    next = nullptr;
 }
 
 Block::~Block() {}
@@ -25,11 +36,19 @@ std::string Block::getPreviousHash() const { return previousHash; }
 
 std::string Block::getCurrentHash() const { return currentHash; }
 
+Block* Block::getNext() const { return next; }
+
+void Block::setNext(Block* nextBlock) { next = nextBlock; }
+
 // timestamp computation using <ctime> library. For more information, see:
 // https://www.w3schools.com/cpp/cpp_date.asp
 std::string Block::calculateTimestamp() const {
     time_t now = time(nullptr);
-    return std::string(ctime(&now));
+    std::string timestamp = std::string(ctime(&now));
+    if (!timestamp.empty() && timestamp.back() == '\n') {
+        timestamp.pop_back();
+    }
+    return timestamp;
 }
 
 std::string Block::calculateHash() const {

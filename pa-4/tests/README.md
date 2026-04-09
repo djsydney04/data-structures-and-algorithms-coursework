@@ -1,52 +1,58 @@
-# Block tests
+# Blockchain tests
 
-This folder contains a smoke test for the `Block` class:
+This folder contains lightweight C++ tests for the assignment classes:
 
 - `block_test.cpp`
+- `blockchain_test.cpp`
 
-The test checks that:
+`block_test.cpp` checks that:
 
 - the constructor stores the index, data, and previous hash correctly
 - the timestamp is not empty
-- the block hash matches the expected value (same rules as your assignment: concatenate fields, sum ASCII codes, print sum as hex)
+- the block hash matches the expected value from the assignment rules
+
+`blockchain_test.cpp` checks that:
+
+- the constructor creates the required genesis block
+- `addBlock()` appends blocks with the correct index and previous hash
+- `validateChain()` accepts a valid chain
+- `displayChain()` prints blocks in order
+- `saveToFile()` writes the required `index|timestamp|data|previousHash|currentHash` format
+- `loadFromFile()` reconstructs a saved blockchain
+- `validateChain()` rejects tampered current hashes and broken previous-hash links
 
 ## Compile and run
 
-**From the `pa-4/tests` directory** (paths match the `#include "../block/block.h"` in the test):
+From the `pa-4` directory:
+
+```bash
+g++ -std=c++17 -Wall -Wextra tests/block_test.cpp block/block.cpp -o block_test
+./block_test
+
+g++ -std=c++17 -Wall -Wextra tests/blockchain_test.cpp block/block.cpp blockchain/blockchain.cpp -o blockchain_test
+./blockchain_test
+```
+
+From the `pa-4/tests` directory:
 
 ```bash
 cd tests
 g++ -std=c++17 -Wall -Wextra block_test.cpp ../block/block.cpp -o block_test
 ./block_test
+
+g++ -std=c++17 -Wall -Wextra blockchain_test.cpp ../block/block.cpp ../blockchain/blockchain.cpp -o blockchain_test
+./blockchain_test
 ```
-
-**From the `pa-4` directory** (assignment root):
-
-```bash
-g++ -std=c++17 -Wall -Wextra tests/block_test.cpp block/block.cpp -o block_test
-./block_test
-```
-
-Quoted includes like `"../block/block.h"` are resolved relative to the `.cpp` file’s directory (`tests/`), so this works without extra `-I` flags.
 
 ## What passing looks like
 
-The test now prints explicit pass/fail messages.
+Each test prints `[PASS]` or `[FAIL]` messages.
 
-- **Pass:** each check prints a `[PASS]` line, followed by an example `Block` object and `All Block tests passed.`
-- **Fail:** the program prints a `[FAIL]` line for the check that did not match expectations and exits with code `1`.
+- On success, the program ends with `All Block tests passed.` or `All Blockchain tests passed.`
+- On failure, it exits with code `1`.
 
-On macOS/Linux you can confirm the exit code:
-
-```bash
-./block_test
-echo $?
-```
-
-`0` means success.
-
-## Clean up the binary (optional)
+## Clean up binaries
 
 ```bash
-rm -f block_test
+rm -f block_test blockchain_test
 ```
