@@ -18,7 +18,7 @@
 
 ## Known Issues / Limitations / Deviations
 
-- None known.
+- None known
 
 ## References
 
