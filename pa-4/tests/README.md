@@ -1,58 +1,23 @@
-# Blockchain tests
+# Tests
 
-This folder contains lightweight C++ tests for the assignment classes:
+This folder contains simple tests you can run with `g++`:
 
-- `block_test.cpp`
-- `blockchain_test.cpp`
+- `block_test.cpp`: tests `Block`
+- `blockchain_test.cpp`: tests `Blockchain`
 
-`block_test.cpp` checks that:
-
-- the constructor stores the index, data, and previous hash correctly
-- the timestamp is not empty
-- the block hash matches the expected value from the assignment rules
-
-`blockchain_test.cpp` checks that:
-
-- the constructor creates the required genesis block
-- `addBlock()` appends blocks with the correct index and previous hash
-- `validateChain()` accepts a valid chain
-- `displayChain()` prints blocks in order
-- `saveToFile()` writes the required `index|timestamp|data|previousHash|currentHash` format
-- `loadFromFile()` reconstructs a saved blockchain
-- `validateChain()` rejects tampered current hashes and broken previous-hash links
-
-## Compile and run
-
-From the `pa-4` directory:
+## Run from `pa-4/` (recommended)
 
 ```bash
+# Block test (no output = pass)
 g++ -std=c++17 -Wall -Wextra tests/block_test.cpp block/block.cpp -o block_test
 ./block_test
 
+# Blockchain test (prints [PASS]/[FAIL])
 g++ -std=c++17 -Wall -Wextra tests/blockchain_test.cpp block/block.cpp blockchain/blockchain.cpp -o blockchain_test
 ./blockchain_test
 ```
 
-From the `pa-4/tests` directory:
+## What “pass” looks like
 
-```bash
-cd tests
-g++ -std=c++17 -Wall -Wextra block_test.cpp ../block/block.cpp -o block_test
-./block_test
-
-g++ -std=c++17 -Wall -Wextra blockchain_test.cpp ../block/block.cpp ../blockchain/blockchain.cpp -o blockchain_test
-./blockchain_test
-```
-
-## What passing looks like
-
-Each test prints `[PASS]` or `[FAIL]` messages.
-
-- On success, the program ends with `All Block tests passed.` or `All Blockchain tests passed.`
-- On failure, it exits with code `1`.
-
-## Clean up binaries
-
-```bash
-rm -f block_test blockchain_test
-```
+- `block_test`: exits with code `0` and prints nothing.
+- `blockchain_test`: prints `[PASS] ...` lines and ends with `All Blockchain tests passed.`
