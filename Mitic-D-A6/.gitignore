@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Compiled / build output
+pa6
+pa6_program
+*.exe
+*.out
+*.o
+tests/.build/
+
+# Zip files for submission
+*.zip
+
+# README (local notes; submit separately in zip)
+README.md
